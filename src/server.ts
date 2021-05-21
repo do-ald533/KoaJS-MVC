@@ -1,9 +1,11 @@
 import koa from "koa";
-import koaRouter, { IRouterContext } from "koa-router";
+import koaRouter from "koa-router";
 import dotenv from "dotenv";
 import morgan from "koa-morgan";
 import path from "path";
 import render from "koa-ejs";
+import json from "koa-json";
+import serve from "koa-static";
 import { connectDB } from "./database/connection";
 import { Routes_controller } from "./controllers/controller";
 
@@ -13,7 +15,11 @@ const app = new koa();
 const router = new koaRouter();
 const controller = new Routes_controller();
 
-app.use(morgan("tiny")).use(router.routes()).use(router.allowedMethods());
+app.use(morgan("tiny"))
+	.use(router.routes())
+	.use(router.allowedMethods())
+	.use(json)
+	.use(serve(path.join(__dirname, "..", "public")));
 
 // template engine
 render(app, {
