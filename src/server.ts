@@ -5,6 +5,7 @@ import path from "path";
 import render from "koa-ejs";
 import json from "koa-json";
 import serve from "koa-static";
+import bodyParser from 'koa-bodyparser'
 import { connectDB } from "./database/connection";
 import router from "./routes/routes";
 
@@ -16,6 +17,7 @@ app.use(morgan("dev"))
 	.use(router.routes())
 	.use(router.allowedMethods())
 	.use(json)
+	.use(bodyParser)
 	.use(serve(path.join(__dirname, "..", "public")));
 
 // template engine

@@ -10,4 +10,12 @@ export class Routes_controller {
             users: users
         })
     }
+
+    async add_page(ctx: IRouterContext) {
+        await ctx.render('add')
+    }
+
+    async add_contact(ctx: IRouterContext) {
+        console.log(ctx.request.body)
+    }
 }
