@@ -17,7 +17,7 @@ app.use(morgan("dev"))
 	.use(router.routes())
 	.use(router.allowedMethods())
 	.use(json)
-	.use(bodyParser)
+	.use(bodyParser())
 	.use(serve(path.join(__dirname, "..", "public")));
 
 // template engine
