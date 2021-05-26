@@ -14,10 +14,10 @@ dotenv.config({ path: "config.env" });
 const app = new koa();
 
 app.use(morgan("dev"))
+	.use(bodyParser())
 	.use(router.routes())
 	.use(router.allowedMethods())
 	.use(json)
-	.use(bodyParser())
 	.use(serve(path.join(__dirname, "..", "public")));
 
 // template engine

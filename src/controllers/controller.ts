@@ -16,6 +16,13 @@ export class Routes_controller {
     }
 
     async add_contact(ctx: IRouterContext) {
-        console.log(ctx.request.body)
+        const body = ctx.request.body
+        const user = await User.create({
+            firstname: body.firstname,
+            lastname: body.lastname,
+            email: body.email,
+            age: body.age
+        })
+        await ctx.redirect('/')
     }
 }
