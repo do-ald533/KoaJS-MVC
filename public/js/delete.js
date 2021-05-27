@@ -1,5 +1,6 @@
-function delete_contact() {
-	const user_id = document.querySelector("#user_id").innerHTML;
+function delete_contact(id) {
+	const user_id = Number(id);
+    console.log(user_id)
 	fetch(`http://localhost:3000/deleteContact?id=${user_id}`, {
 		method: "DELETE",
 	});
