@@ -7,7 +7,7 @@ export class Routes_controller {
         const users = await User.findAll()
         await ctx.render('index', {
             title: 'test',
-            users: users
+            users: await User.findAll()
         })
     }
 
@@ -24,5 +24,15 @@ export class Routes_controller {
             age: body.age
         })
         await ctx.redirect('/')
+    }
+
+    async delete_contact(ctx: IRouterContext) {
+        const contact_id = ctx.request.query.id
+        const deleted_contact = await User.destroy({
+            where: {
+                id: contact_id
+            }
+        })
+        console.log()
     }
 }

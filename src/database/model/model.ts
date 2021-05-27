@@ -33,7 +33,7 @@ export async function create_table() {
 			}
 		);
 
-		await User.sync({ force: true });
+		await User.sync();
 		console.log("deu certo");
 	} catch (error) {
 		console.log(error);
