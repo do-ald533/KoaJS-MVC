@@ -6,7 +6,6 @@ export class Routes_controller {
     async home(ctx: IRouterContext) {
         const users = await User.findAll()
         await ctx.render('index', {
-            title: 'test',
             users: await User.findAll()
         })
     }
@@ -33,6 +32,11 @@ export class Routes_controller {
                 id: contact_id
             }
         })
-        console.log()
+        await ctx.redirect('/')
+    }
+
+    async modify_contact(ctx: IRouterContext) {
+        const contact_id = ctx.request.query.id
+        const modified_contact = await User.update
     }
 }

@@ -1,4 +1,4 @@
-import { DataTypes, Model } from "sequelize";
+import { DataTypes, Model, Sequelize, UUIDV4 } from "sequelize";
 import { sequelize } from "../connection";
 
 export class User extends Model {}
@@ -9,8 +9,8 @@ export async function create_table() {
 			{
 				id: {
 					primaryKey: true,
-					autoIncrement: true,
-					type: DataTypes.INTEGER,
+					type: DataTypes.UUIDV4,
+					defaultValue: UUIDV4
 				},
 				firstname: {
 					type: DataTypes.STRING,

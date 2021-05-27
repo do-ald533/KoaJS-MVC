@@ -8,4 +8,5 @@ export default router
 	.get("/", controller.home)
 	.get("/add", controller.add_page)
 	.post("/addContact", controller.add_contact)
+	.put("/modifyContact", controller.modify_contact)
 	.delete("/deleteContact", controller.delete_contact);
